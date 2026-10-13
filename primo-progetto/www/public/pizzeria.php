@@ -127,6 +127,7 @@ function spuntato(string $campo, string $valore): string
         .riepilogo strong { display:inline-block; min-width:130px; }
         a.nuovo { color:var(--accento); text-decoration:none; font-weight:600; }
         .nota { font-size:.85rem; color:#666; margin:.9rem 0 0; }
+        .vh { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
     </style>
 </head>
 <body>
@@ -188,7 +189,8 @@ function spuntato(string $campo, string $valore): string
 
             <fieldset>
                 <legend>Tipo di pizza *</legend>
-                <select name="pizza">
+                <label class="vh" for="pizza">Tipo di pizza</label>
+                <select name="pizza" id="pizza">
                     <option value="">-- Seleziona una pizza --</option>
                     <?php foreach ($pizze as $chiave => $etichetta): ?>
                         <option value="<?= $chiave ?>"<?= (($_POST['pizza'] ?? '') === $chiave) ? ' selected' : '' ?>><?= htmlspecialchars($etichetta, ENT_QUOTES, 'UTF-8') ?></option>
@@ -198,7 +200,8 @@ function spuntato(string $campo, string $valore): string
 
             <fieldset>
                 <legend>Tipo di impasto *</legend>
-                <select name="impasto">
+                <label class="vh" for="impasto">Tipo di impasto</label>
+                <select name="impasto" id="impasto">
                     <option value="">-- Seleziona un impasto --</option>
                     <?php foreach ($impasti as $chiave => $etichetta): ?>
                         <option value="<?= $chiave ?>"<?= (($_POST['impasto'] ?? '') === $chiave) ? ' selected' : '' ?>><?= htmlspecialchars($etichetta, ENT_QUOTES, 'UTF-8') ?></option>
